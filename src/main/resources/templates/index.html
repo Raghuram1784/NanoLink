@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunset URL Shortener</title>
+    <title>NanoLink</title>
     <!-- Tabler Icons Web Font -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <style>
@@ -12,7 +13,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             min-height: 100vh;
             background: #16161a;
@@ -24,7 +25,7 @@
             position: relative;
             overflow-x: hidden;
         }
-        
+
         /* Floating pastel background orbs and grid mesh */
         .mesh {
             position: absolute;
@@ -33,14 +34,14 @@
             overflow: hidden;
             z-index: 0;
         }
-        
+
         .orb {
             position: absolute;
             border-radius: 50%;
             filter: blur(100px);
             animation: orbFloat 15s ease-in-out infinite alternate;
         }
-        
+
         .orb1 {
             width: 600px;
             height: 600px;
@@ -49,7 +50,7 @@
             left: -150px;
             animation-delay: 0s;
         }
-        
+
         .orb2 {
             width: 500px;
             height: 500px;
@@ -58,7 +59,7 @@
             right: -100px;
             animation-delay: -5s;
         }
-        
+
         .orb3 {
             width: 400px;
             height: 400px;
@@ -67,7 +68,7 @@
             left: 50%;
             animation-delay: -9s;
         }
-        
+
         .orb4 {
             width: 350px;
             height: 350px;
@@ -76,29 +77,32 @@
             right: 0%;
             animation-delay: -3s;
         }
-        
+
         @keyframes orbFloat {
             0% {
                 transform: translate(0, 0) scale(1);
             }
+
             33% {
                 transform: translate(50px, -40px) scale(1.05);
             }
+
             66% {
                 transform: translate(-30px, 60px) scale(0.95);
             }
+
             100% {
                 transform: translate(40px, 30px) scale(1.02);
             }
         }
-        
+
         .grid-lines {
             position: absolute;
             inset: 0;
             background-image: linear-gradient(rgba(255, 182, 0, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 182, 0, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
         }
-        
+
         /* Glowing light particles drifting upwards */
         .particles {
             position: absolute;
@@ -107,43 +111,126 @@
             z-index: 1;
             overflow: hidden;
         }
-        
+
         .particle {
             position: absolute;
-            background: rgba(255, 182, 0, 0.35); /* Glowing gold */
+            background: rgba(255, 182, 0, 0.35);
+            /* Glowing gold */
             border-radius: 50%;
             animation: floatUp 15s linear infinite;
             box-shadow: 0 0 10px rgba(255, 182, 0, 0.25);
         }
-        
-        .p1 { width: 3px; height: 3px; left: 10%; bottom: -10px; animation-duration: 14s; animation-delay: 0s; }
-        .p2 { width: 4px; height: 4px; left: 25%; bottom: -10px; animation-duration: 18s; animation-delay: -3s; }
-        .p3 { width: 2px; height: 2px; left: 40%; bottom: -10px; animation-duration: 12s; animation-delay: -6s; }
-        .p4 { width: 5px; height: 5px; left: 55%; bottom: -10px; animation-duration: 22s; animation-delay: -2s; }
-        .p5 { width: 3px; height: 3px; left: 70%; bottom: -10px; animation-duration: 16s; animation-delay: -5s; }
-        .p6 { width: 4px; height: 4px; left: 85%; bottom: -10px; animation-duration: 20s; animation-delay: -8s; }
-        .p7 { width: 2px; height: 2px; left: 15%; bottom: -10px; animation-duration: 10s; animation-delay: -4s; }
-        .p8 { width: 5px; height: 5px; left: 35%; bottom: -10px; animation-duration: 24s; animation-delay: -1s; }
-        .p9 { width: 3px; height: 3px; left: 65%; bottom: -10px; animation-duration: 15s; animation-delay: -7s; }
-        .p10 { width: 4px; height: 4px; left: 80%; bottom: -10px; animation-duration: 19s; animation-delay: -3s; }
-        
+
+        .p1 {
+            width: 3px;
+            height: 3px;
+            left: 10%;
+            bottom: -10px;
+            animation-duration: 14s;
+            animation-delay: 0s;
+        }
+
+        .p2 {
+            width: 4px;
+            height: 4px;
+            left: 25%;
+            bottom: -10px;
+            animation-duration: 18s;
+            animation-delay: -3s;
+        }
+
+        .p3 {
+            width: 2px;
+            height: 2px;
+            left: 40%;
+            bottom: -10px;
+            animation-duration: 12s;
+            animation-delay: -6s;
+        }
+
+        .p4 {
+            width: 5px;
+            height: 5px;
+            left: 55%;
+            bottom: -10px;
+            animation-duration: 22s;
+            animation-delay: -2s;
+        }
+
+        .p5 {
+            width: 3px;
+            height: 3px;
+            left: 70%;
+            bottom: -10px;
+            animation-duration: 16s;
+            animation-delay: -5s;
+        }
+
+        .p6 {
+            width: 4px;
+            height: 4px;
+            left: 85%;
+            bottom: -10px;
+            animation-duration: 20s;
+            animation-delay: -8s;
+        }
+
+        .p7 {
+            width: 2px;
+            height: 2px;
+            left: 15%;
+            bottom: -10px;
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        .p8 {
+            width: 5px;
+            height: 5px;
+            left: 35%;
+            bottom: -10px;
+            animation-duration: 24s;
+            animation-delay: -1s;
+        }
+
+        .p9 {
+            width: 3px;
+            height: 3px;
+            left: 65%;
+            bottom: -10px;
+            animation-duration: 15s;
+            animation-delay: -7s;
+        }
+
+        .p10 {
+            width: 4px;
+            height: 4px;
+            left: 80%;
+            bottom: -10px;
+            animation-duration: 19s;
+            animation-delay: -3s;
+        }
+
         @keyframes floatUp {
             0% {
                 transform: translateY(0) translateX(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.7;
             }
+
             90% {
                 opacity: 0.7;
             }
+
             100% {
                 transform: translateY(-110vh) translateX(50px);
                 opacity: 0;
             }
         }
-        
+
         /* Glassmorphism main card */
         .card {
             position: relative;
@@ -157,26 +244,27 @@
             border-radius: 28px;
             padding: 2.5rem 2.25rem;
             animation: cardDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-            box-shadow: 0 0 0 1px rgba(255, 182, 0, 0.05), 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 1px rgba(255, 182, 0, 0.05), 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
-        
+
         @keyframes cardDrop {
             from {
                 opacity: 0;
                 transform: translateY(40px) scale(0.96);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
-        
+
         /* Logo and Header */
         .logo-wrap {
             text-align: center;
             margin-bottom: 2rem;
         }
-        
+
         .logo-ring {
             display: inline-flex;
             align-items: center;
@@ -190,16 +278,19 @@
             animation: logoPulse 3s ease-in-out infinite;
             box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.4);
         }
-        
+
         @keyframes logoPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.4), 0 0 30px rgba(255, 122, 0, 0.25);
             }
+
             50% {
                 box-shadow: 0 0 0 16px rgba(255, 122, 0, 0), 0 0 50px rgba(255, 122, 0, 0.45);
             }
         }
-        
+
         .logo-ring::before {
             content: '';
             position: absolute;
@@ -210,18 +301,18 @@
             animation: rotateBorder 4s linear infinite;
             filter: blur(3px);
         }
-        
+
         @keyframes rotateBorder {
             to {
                 transform: rotate(360deg);
             }
         }
-        
+
         .logo-icon {
             font-size: 30px;
             color: #fff;
         }
-        
+
         .logo-wrap h1 {
             font-size: 28px;
             font-weight: 700;
@@ -229,27 +320,27 @@
             letter-spacing: -0.5px;
             margin-bottom: 8px;
         }
-        
+
         .logo-wrap p {
             font-size: 14.5px;
             color: rgba(255, 255, 255, 0.5);
             letter-spacing: 0.1px;
             font-weight: 500;
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, #ff7a00, #e2b714, #ffb300);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         /* Fields & Inputs */
         .field-wrap {
             position: relative;
             margin-bottom: .75rem;
         }
-        
+
         .field-icon {
             position: absolute;
             left: 18px;
@@ -260,7 +351,7 @@
             pointer-events: none;
             transition: color .3s;
         }
-        
+
         .url-in {
             width: 100%;
             padding: 16px 16px 16px 52px;
@@ -274,22 +365,22 @@
             outline: none;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
-        
+
         .url-in::placeholder {
             color: rgba(255, 255, 255, 0.3);
         }
-        
+
         .url-in:focus {
             background: rgba(255, 255, 255, 0.06);
             border-color: #ff7a00;
             box-shadow: 0 0 0 4px rgba(255, 122, 0, 0.15), 0 0 20px rgba(255, 122, 0, 0.1);
         }
-        
-        .url-in:focus ~ .field-icon,
+
+        .url-in:focus~.field-icon,
         .field-wrap:focus-within .field-icon {
             color: #ff7a00;
         }
-        
+
         .err {
             font-size: 13px;
             color: #ff7a00;
@@ -298,19 +389,25 @@
             animation: shake 0.35s ease;
             font-weight: 500;
         }
-        
+
         @keyframes shake {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateX(0);
             }
-            20%, 60% {
+
+            20%,
+            60% {
                 transform: translateX(-5px);
             }
-            40%, 80% {
+
+            40%,
+            80% {
                 transform: translateX(5px);
             }
         }
-        
+
         /* Buttons */
         .btn-main {
             width: 100%;
@@ -333,7 +430,7 @@
             gap: 10px;
             box-shadow: 0 12px 40px rgba(255, 122, 0, 0.45);
         }
-        
+
         .btn-main::before {
             content: '';
             position: absolute;
@@ -342,26 +439,26 @@
             opacity: 0;
             transition: opacity .3s;
         }
-        
+
         .btn-main:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 40px rgba(255, 122, 0, 0.55), 0 0 0 1px rgba(255, 122, 0, 0.3);
         }
-        
+
         .btn-main:hover::before {
             opacity: 1;
         }
-        
+
         .btn-main:active {
             transform: translateY(0) scale(0.98);
         }
-        
+
         .btn-main span,
         .btn-main i {
             position: relative;
             z-index: 1;
         }
-        
+
         /* Dividers */
         .divider {
             display: flex;
@@ -373,7 +470,7 @@
             letter-spacing: 1.5px;
             font-weight: 600;
         }
-        
+
         .divider::before,
         .divider::after {
             content: '';
@@ -381,23 +478,24 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         }
-        
+
         /* Result Panel */
         .result {
             animation: resultPop .5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
-        
+
         @keyframes resultPop {
             from {
                 opacity: 0;
                 transform: scale(0.95) translateY(15px);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1) translateY(0);
             }
         }
-        
+
         .res-header {
             background: linear-gradient(135deg, rgba(255, 122, 0, 0.2), rgba(226, 183, 20, 0.15));
             border: 1px solid rgba(255, 182, 0, 0.3);
@@ -410,12 +508,12 @@
             color: rgba(255, 255, 255, 0.95);
             font-weight: 600;
         }
-        
+
         .res-header i {
             font-size: 18px;
             color: #10b981;
         }
-        
+
         .res-body {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.07);
@@ -423,14 +521,14 @@
             border-radius: 0 0 16px 16px;
             padding: 20px;
         }
-        
+
         /* Dynamic Stats */
         .stats {
             display: flex;
             gap: 10px;
             margin-bottom: 12px;
         }
-        
+
         .stat-box {
             flex: 1;
             text-align: center;
@@ -440,23 +538,23 @@
             padding: 12px 6px;
             transition: all .2s;
         }
-        
+
         .stat-box:hover {
             background: rgba(255, 255, 255, 0.06);
             border-color: rgba(255, 122, 0, 0.3);
             transform: translateY(-2px);
         }
-        
+
         .stat-num {
             font-size: 20px;
             font-weight: 700;
             color: #e2b714;
         }
-        
+
         .stat-save {
             color: #10b981 !important;
         }
-        
+
         .stat-lbl {
             font-size: 10px;
             color: rgba(255, 255, 255, 0.35);
@@ -465,7 +563,7 @@
             letter-spacing: .8px;
             font-weight: 600;
         }
-        
+
         /* Result rows */
         .res-row {
             display: flex;
@@ -478,16 +576,16 @@
             margin-bottom: 10px;
             transition: all .25s;
         }
-        
+
         .res-row:hover {
             background: rgba(255, 255, 255, 0.06);
             border-color: rgba(255, 255, 255, 0.12);
         }
-        
+
         .res-row:last-of-type {
             margin-bottom: 12px;
         }
-        
+
         .res-lbl {
             font-size: 10px;
             color: rgba(255, 255, 255, 0.35);
@@ -496,7 +594,7 @@
             margin-bottom: 4px;
             font-weight: 600;
         }
-        
+
         .res-val {
             font-size: 14.5px;
             color: rgba(255, 255, 255, 0.85);
@@ -505,7 +603,7 @@
             flex: 1;
             min-width: 0;
         }
-        
+
         .res-val.short-v {
             font-size: 16px;
             font-weight: 700;
@@ -515,7 +613,7 @@
             background-clip: text;
             cursor: pointer;
         }
-        
+
         .res-val.code-v {
             font-family: 'Courier New', monospace;
             color: #e2b714;
@@ -523,7 +621,7 @@
             font-size: 16px;
             font-weight: 700;
         }
-        
+
         /* Icon Buttons */
         .ico-btn {
             background: rgba(255, 255, 255, 0.04);
@@ -540,36 +638,39 @@
             font-size: 16px;
             transition: all .2s;
         }
-        
+
         .ico-btn:hover {
             background: rgba(255, 122, 0, 0.15);
             border-color: rgba(255, 122, 0, 0.4);
             color: #ff7a00;
             transform: scale(1.08);
         }
-        
+
         .ico-btn.ok {
             background: rgba(16, 185, 129, 0.15);
             border-color: #10b981;
             color: #10b981;
             animation: popBounce .3s ease;
         }
-        
+
         @keyframes popBounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.25);
             }
         }
-        
+
         .act-row {
             display: flex;
             gap: 10px;
             margin-top: 6px;
         }
-        
+
         .btn-s {
             flex: 1;
             padding: 12px 14px;
@@ -584,36 +685,36 @@
             gap: 8px;
             transition: all .2s;
         }
-        
+
         .btn-copy {
             background: linear-gradient(135deg, #ff7a00, #e2b714);
             color: #fff;
             border: none;
             box-shadow: 0 8px 25px rgba(255, 122, 0, 0.35);
         }
-        
+
         .btn-copy:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255, 122, 0, 0.45);
             opacity: .95;
         }
-        
+
         .btn-copy:active {
             transform: scale(.98);
         }
-        
+
         .btn-reset {
             background: rgba(255, 255, 255, 0.04);
             color: rgba(255, 255, 255, 0.75);
             border: 1px solid rgba(255, 182, 0, 0.15);
         }
-        
+
         .btn-reset:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 182, 0, 0.3);
             color: #fff;
         }
-        
+
         /* Copy Toast wrap */
         .toast-wrap {
             position: fixed;
@@ -632,41 +733,42 @@
             font-weight: 600;
             white-space: nowrap;
             z-index: 99;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 182, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 182, 0, 0.1);
             transition: transform .4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity .3s;
             opacity: 0;
             pointer-events: none;
         }
-        
+
         .toast-wrap.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-        
+
         .toast-wrap i {
             font-size: 16px;
             color: #10b981;
         }
-        
+
         @media(max-width: 480px) {
             .card {
                 padding: 1.75rem 1.25rem;
             }
-            
+
             .logo-wrap h1 {
                 font-size: 24px;
             }
-            
+
             .act-row {
                 flex-direction: column;
             }
-            
+
             .stats {
                 flex-direction: column;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="mesh">
         <div class="grid-lines"></div>
@@ -701,18 +803,12 @@
         <form th:action="@{/shorten}" method="post" th:object="${request}" id="shortenForm">
             <div class="field-wrap">
                 <i class="ti ti-world field-icon" aria-hidden="true"></i>
-                <input 
-                    class="url-in" 
-                    id="uInput" 
-                    type="url" 
-                    name="url"
-                    th:field="*{url}"
-                    placeholder="https://your-very-long-url.com/goes/here" 
-                    autocomplete="off" 
-                    required />
+                <input class="url-in" id="uInput" type="url" name="url" th:field="*{url}"
+                    placeholder="https://your-very-long-url.com/goes/here" autocomplete="off" required />
             </div>
             <div th:if="${#fields.hasErrors('url')}" class="err" id="errMsg">
-                <i class="ti ti-alert-circle" aria-hidden="true"></i> <span th:errors="*{url}">Please enter a valid URL starting with http(s)://</span>
+                <i class="ti ti-alert-circle" aria-hidden="true"></i> <span th:errors="*{url}">Please enter a valid URL
+                    starting with http(s)://</span>
             </div>
 
             <button type="submit" class="btn-main" id="mainBtn">
@@ -735,7 +831,8 @@
                 <div class="res-row">
                     <div style="flex:1;min-width:0">
                         <div class="res-lbl">Short URL</div>
-                        <div class="res-val short-v" id="shortV" th:text="${response.shortUrl}" onclick="cpShort()"></div>
+                        <div class="res-val short-v" id="shortV" th:text="${response.shortUrl}" onclick="cpShort()">
+                        </div>
                     </div>
                     <button class="ico-btn" id="cpBtn" onclick="cpShort()" aria-label="Copy short URL">
                         <i class="ti ti-copy" aria-hidden="true"></i>
@@ -745,7 +842,8 @@
                 <div class="res-row">
                     <div style="flex:1;min-width:0">
                         <div class="res-lbl">Original URL</div>
-                        <div class="res-val" id="origV" th:text="${response.originalUrl}" style="font-size:13px;color:rgba(255, 255, 255, 0.45);font-weight:400"></div>
+                        <div class="res-val" id="origV" th:text="${response.originalUrl}"
+                            style="font-size:13px;color:rgba(255, 255, 255, 0.45);font-weight:400"></div>
                     </div>
                 </div>
 
@@ -839,12 +937,12 @@
         if (responseExists) {
             const origUrl = /*[[${response != null ? response.originalUrl : ''}]]*/ '';
             const shortUrl = /*[[${response != null ? response.shortUrl : ''}]]*/ '';
-            
+
             const oLen = origUrl.length;
             const sLen = shortUrl.length;
             const saved = Math.max(0, oLen - sLen);
             const pct = oLen > 0 ? Math.round((saved / oLen) * 100) : 0;
-            
+
             document.getElementById('statsEl').innerHTML = `
                 <div class="stat-box">
                     <div class="stat-num">${oLen}</div>
@@ -863,4 +961,5 @@
         /*]]>*/
     </script>
 </body>
+
 </html>
