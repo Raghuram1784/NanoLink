@@ -28,6 +28,7 @@ NanoLink is a high-performance, cloud-ready Spring Boot URL shortener wrapped in
 
 ---
 
+
 ## 🚀 Getting Started (For Other Users)
 
 To run NanoLink on your local computer, follow these simple setup steps:
@@ -68,15 +69,46 @@ To run NanoLink on your local computer, follow these simple setup steps:
 
 ---
 
-## ☁️ Cloud Deployment Configuration
+## 🔄 Internal Architecture & Backend Flow
 
-NanoLink is built following **Twelve-Factor App** methodologies, keeping configuration completely separate from code.
+NanoLink follows a layered Spring Boot MVC architecture designed for scalability, maintainability, and clean separation of concerns.
 
-When deploying to cloud providers (like **Render**, **Railway**, **AWS**, or **Heroku**):
-1.  Connect your GitHub repository.
-2.  Set the standard environment variables in your cloud provider's console:
-    *   `DB_USERNAME`: Your hosted cloud database username.
-    *   `DB_PASSWORD`: Your hosted cloud database password.
-    *   `SPRING_DATASOURCE_URL`: Your hosted database JDBC URL (e.g. `jdbc:mysql://<host>:<port>/<db_name>`).
-    *   `APP_BASE_URL`: **Your custom domain!** (e.g., `https://nanolink.co`).
-3.  Once live, the application will automatically read your public domain name from the environment and instantly generate shortened links using it!
+```text
+┌─────────────────────┐
+│     User Browser    │
+└──────────┬──────────┘
+           │
+           │ 1. User enters long URL
+           ▼
+┌─────────────────────┐
+│   Thymeleaf UI      │
+│  index.html/result  │
+└──────────┬──────────┘
+           │
+           │ 2. HTTP Request
+           ▼
+┌─────────────────────┐
+│   Controller Layer  │
+│ Handles Web Routes  │
+└──────────┬──────────┘
+           │
+           │ 3. Calls Business Logic
+           ▼
+┌─────────────────────┐
+│    Service Layer    │
+│ URL Generation Logic│
+└──────────┬──────────┘
+           │
+           │ 4. Database Operations
+           ▼
+┌─────────────────────┐
+│  Repository Layer   │
+│ Spring Data JPA ORM │
+└──────────┬──────────┘
+           │
+           │ 5. Persist Data
+           ▼
+┌─────────────────────┐
+│  MySQL / H2 Database│
+└─────────────────────┘
+```
