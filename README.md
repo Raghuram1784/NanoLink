@@ -112,3 +112,203 @@ NanoLink follows a layered Spring Boot MVC architecture designed for scalability
 │  MySQL / H2 Database│
 └─────────────────────┘
 ```
+
+---
+
+## 🧠 Complete URL Shortening Flow
+
+```text
+User submits long URL
+        │
+        ▼
+Controller receives POST request
+        │
+        ▼
+Service validates URL format
+        │
+        ▼
+Generate unique short code
+        │
+        ▼
+Check database for collisions
+        │
+        ▼
+Create URL entity object
+        │
+        ▼
+Save mapping into database
+        │
+        ▼
+Return shortened URL to frontend
+        │
+        ▼
+Thymeleaf renders result page
+```
+
+---
+
+## 🔁 URL Redirection Flow
+
+```text
+User opens shortened URL
+        │
+        ▼
+GET /{shortCode}
+        │
+        ▼
+Controller extracts shortCode
+        │
+        ▼
+Service searches database
+        │
+        ▼
+Repository fetches original URL
+        │
+        ▼
+Spring Boot returns HTTP redirect
+        │
+        ▼
+Browser opens original website
+```
+
+---
+
+## 🏗️ MVC Architecture
+
+```text
+Controller  →  Handles HTTP requests & routes
+Service     →  Contains business logic
+Repository  →  Manages database operations
+Model       →  Represents application data
+View        →  Thymeleaf frontend templates
+```
+
+### 📂 Project Structure
+
+```text
+controller/  → Request handling
+service/     → URL shortening logic
+repository/  → Database communication
+entity/      → Database entities
+model/       → Request/response models
+templates/   → Thymeleaf UI pages
+```
+
+### 🖼️ View Layer
+
+```text
+index.html   → URL submission page
+result.html  → Shortened URL result page
+```
+
+---
+
+## 🗄️ Database Architecture
+
+NanoLink uses relational database storage for persistent URL mapping.
+
+```text
+┌─────────────────────────────┐
+│           url_table         │
+├──────────────┬──────────────┤
+│ id           │ Primary Key  │
+│ originalUrl  │ Long URL     │
+│ shortCode    │ Unique Code  │
+│ createdAt    │ Timestamp    │
+└──────────────┴──────────────┘
+```
+
+Example:
+
+```text
+id: 1
+originalUrl: https://spring.io/projects/spring-boot
+shortCode: nL92xA
+createdAt: 2026-05-26
+```
+
+---
+
+## ⚡ Spring Data JPA & Hibernate Flow
+
+```text
+Java Entity Object
+        │
+        ▼
+Hibernate ORM Mapping
+        │
+        ▼
+SQL Query Generation
+        │
+        ▼
+MySQL Database Execution
+```
+
+Example:
+
+```java
+urlRepository.save(url);
+```
+
+Automatically becomes:
+
+```sql
+INSERT INTO urls (...)
+```
+
+without manually writing SQL queries.
+
+---
+
+## ☁️ Cloud-Ready Architecture
+
+NanoLink follows Twelve-Factor App principles by separating configuration from application code.
+
+```text
+GitHub Repository
+        │
+        ▼
+Cloud Provider (Render/Railway/AWS)
+        │
+        ▼
+Environment Variables
+        │
+        ▼
+Spring Boot Application
+        │
+        ▼
+Hosted MySQL Database
+```
+
+Environment Variables Used:
+
+```env
+DB_USERNAME
+DB_PASSWORD
+SPRING_DATASOURCE_URL
+APP_BASE_URL
+```
+
+---
+
+## 🚀 Tech Stack Architecture
+
+```text
+Frontend:
+Thymeleaf + HTML + CSS + Glassmorphism UI
+
+Backend:
+Java 21 + Spring Boot + MVC Architecture
+
+Persistence:
+Spring Data JPA + Hibernate ORM
+
+Database:
+MySQL / H2
+
+Build Tool:
+Gradle Wrapper
+
+Deployment:
+Render / Railway / Cloud Platforms
+```
